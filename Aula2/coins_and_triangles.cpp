@@ -24,7 +24,13 @@ int main()
          4 = 10
          5 = 15
         */
-        printf("%d\n", altura(n));
+        int j = 0, altura = 0;
+        while (altura <= n)
+        {
+            j++;
+            altura += j;
+        }
+        printf("%d\n", j - 1);
     }
     return 0;
 }
