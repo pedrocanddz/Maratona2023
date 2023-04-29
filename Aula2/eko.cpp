@@ -24,21 +24,30 @@ int main()
     // while 7 > 7
     // 15++
     //
-    int aux = array[n - 1];
-    int diff = 0;
-    for (int i = n - 1; i > 0; i--)
+    int left = 0, right = array[n - 1], H;
+    while (left <= right)
     {
-        diff = (aux + 1) - array[i];
-        cout << "diff : " << diff << " aux : " << aux << " array[i] " << array[i] << endl;
-        aux += diff;
-        if (diff >= m)
+        int mid = (left + right) / 2;
+        long long sum = 0;
+        for (int i = 0; i < n; i++)
         {
-            aux = array[i];
-            break;
+            if (array[i] > mid)
+            {
+                sum += array[i] - mid;
+            }
+        }
+        if (sum >= m)
+        {
+            H = mid;
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid - 1;
         }
     }
 
-    cout << aux << "\n";
+    cout << H << "\n";
 
     return 0;
 }
